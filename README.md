@@ -11,5 +11,4 @@ Social networks posting application
 - Twitter,
 - Blogger.
 
-Приложение реализуется при помощи продукта Xamarin для целевой платформы Android.
-
+Приложение реализуется при помощи продукта Android Studio для целевой платформы Android на языке программирования Java.
