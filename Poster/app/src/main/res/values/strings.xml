@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Poster</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="texting">Текст поста:</string>
+    <string name="input">Введите текст поста</string>
+</resources>
