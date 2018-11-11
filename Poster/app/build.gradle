@@ -32,4 +32,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':vksdk_library')
+    // Facebook Android SDK (everything)
+    implementation 'com.facebook.android:facebook-android-sdk:4.38.1'
 }

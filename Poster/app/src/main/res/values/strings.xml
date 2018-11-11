@@ -12,4 +12,6 @@
     <string name="titleFB">Facebook</string>
     <string name="home">Home</string>
     <integer name="com_vk_sdk_AppId">6748503</integer>
+    <string name="facebook_app_id">325429504901250</string>
+    <string name="facebook_login_protocol_scheme">fb325429504901250</string>
 </resources>
