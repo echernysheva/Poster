@@ -15,4 +15,5 @@
     <string name="vkAccLogout">Logout</string>
     <string name="twitterAccLogin">Login</string>
     <string name="twitterAccLogout">Logout</string>
+    <integer name="com_vk_sdk_AppId">6748503</integer>
 </resources>
