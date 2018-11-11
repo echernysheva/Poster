@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //VKSdk.initialize(Context applicationContext);
+
         loadFragment(new PostingFragment());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
