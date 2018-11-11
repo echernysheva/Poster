@@ -1,19 +1,15 @@
 <resources>
     <string name="app_name">Poster</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="postTitle">Posting</string>
     <string name="accountsTitle">Accounts</string>
     <string name="vkSwitch">VK</string>
-    <string name="twitterSwitch">Twitter</string>
+    <string name="fbSwitch">Facebook</string>
     <string name="btnSend">Отправить</string>
     <string name="hintTitle">Введите текст сообщения</string>
-    <string name="vkAccTitle">VK</string>
-    <string name="twitterAccTitle">Twitter</string>
-    <string name="vkAccLogin">Login</string>
-    <string name="vkAccLogout">Logout</string>
-    <string name="twitterAccLogin">Login</string>
-    <string name="twitterAccLogout">Logout</string>
+    <string name="titleVK">VK</string>
+    <string name="login">Log In</string>
+    <string name="logout">Log Out</string>
+    <string name="titleFB">Facebook</string>
+    <string name="home">Home</string>
     <integer name="com_vk_sdk_AppId">6748503</integer>
 </resources>

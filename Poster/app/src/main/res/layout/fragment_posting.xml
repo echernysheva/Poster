@@ -10,8 +10,8 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Switch
-        android:id="@+id/switch1"
-        android:layout_width="107dp"
+        android:id="@+id/switchVK"
+        android:layout_width="137dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
@@ -19,22 +19,22 @@
         android:text="@string/vkSwitch"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/messageText" />
 
     <Switch
-        android:id="@+id/switch2"
-        android:layout_width="107dp"
+        android:id="@+id/switchFB"
+        android:layout_width="137dp"
         android:layout_height="49dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="16dp"
-        android:text="@string/twitterSwitch"
+        android:text="@string/fbSwitch"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/switchVK" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/messageText"
         android:layout_width="357dp"
         android:layout_height="264dp"
         android:gravity="top"
@@ -55,7 +55,7 @@
         tools:hint="Введите текст сообщения (максимум 280 символов)" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonSend"
         android:layout_width="131dp"
         android:layout_height="66dp"
         android:layout_marginTop="8dp"
@@ -65,7 +65,7 @@
         android:text="@string/btnSend"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch2"
+        app:layout_constraintTop_toBottomOf="@+id/switchFB"
         app:layout_constraintVertical_bias="0.685" />
 
 </android.support.constraint.ConstraintLayout>
