@@ -66,17 +66,6 @@ public class PostingFragment extends Fragment {
             }
         });
 
-        // обработка нажатия кнопки отправки
-        send.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                if (swVK.isChecked()){
-                    //отправка в ВК
-                }
-                if (swFB.isChecked()){
-                    //отправка в ФБ
-                }
-            }
-        });
         Sync();
     }
 }
