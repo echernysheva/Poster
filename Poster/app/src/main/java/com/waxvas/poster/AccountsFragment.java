@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.vk.sdk.VKAccessToken;
+import com.vk.sdk.VKCallback;
+import com.vk.sdk.VKScope;
 import com.vk.sdk.VKSdk;
 
 import com.facebook.AccessToken;
@@ -24,9 +27,18 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.vk.sdk.api.VKApi;
+import com.vk.sdk.api.VKError;
+import com.vk.sdk.api.VKParameters;
+
+import org.w3c.dom.Text;
 
 
 public class AccountsFragment extends Fragment {
+
+    Button loginVK;
+    TextView nameVK;
+
     private CallbackManager callbackManager;
     private TextView textView;
 
@@ -52,22 +64,9 @@ public class AccountsFragment extends Fragment {
         }
     };
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //just change the fragment_dashboard
-        //with the fragment you want to inflate
-        //like if the class is HomeFragment it should have R.layout.home_fragment
-        //if it is DashboardFragment it should have R.layout.fragment_dashboard
-
-        View view = inflater.inflate(R.layout.fragment_accounts, null);
-
-        Button loginVK = (Button) view.findViewById(R.id.buttonVK);
-        loginVK.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               VKSdk.login(getActivity());
-            }
-        });
-
-        return view;
+        return inflater.inflate(R.layout.fragment_accounts, null);
     }
 
     @Override
@@ -98,6 +97,8 @@ public class AccountsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Facebook
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
         textView = (TextView) view.findViewById(R.id.nameFB);
 
@@ -105,13 +106,38 @@ public class AccountsFragment extends Fragment {
         loginButton.setFragment(this);
         loginButton.registerCallback(callbackManager, callback);
 
+        // Вконтакте
+        nameVK = (TextView) view.findViewById(R.id.nameVK);
+        loginVK = (Button) view.findViewById(R.id.buttonVK);
+        loginVK.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (VKSdk.isLoggedIn())
+                    VKSdk.logout();
+                else
+                    VKSdk.login(getActivity(), VKScope.WALL);
+                Sync();
+            }
+        });
+
+        Sync();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        Sync();
+    }
 
+    private void Sync() {
+        if (VKSdk.isLoggedIn()) {
+            loginVK.setText(getResources().getString(R.string.logout));
+
+        }
+        else {
+            loginVK.setText(getResources().getString(R.string.login));
+            nameVK.setText("");
+        }
     }
 
     private void displayMessage(Profile profile){
