@@ -52,34 +52,22 @@ public class AccountsFragment extends Fragment {
         }
     };
 
-    Button loginVK;
-    MainActivity act;
-
-    public void Sync(){
-        if (act.isLoginVK) loginVK.setText("@string/logout");
-        else loginVK.setText("@string/login");
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_posting, null);
-    }
+        //just change the fragment_dashboard
+        //with the fragment you want to inflate
+        //like if the class is HomeFragment it should have R.layout.home_fragment
+        //if it is DashboardFragment it should have R.layout.fragment_dashboard
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_accounts, null);
 
-        loginVK = (Button) view.findViewById(R.id.buttonVK);
-        act = (MainActivity) getActivity();
-
+        Button loginVK = (Button) view.findViewById(R.id.buttonVK);
         loginVK.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-                VKSdk.login(getActivity());
+               VKSdk.login(getActivity());
             }
         });
 
-        Sync();
+        return view;
     }
 
     @Override
