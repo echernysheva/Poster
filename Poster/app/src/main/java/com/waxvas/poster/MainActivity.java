@@ -19,6 +19,9 @@ import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener  {
 
+    boolean isLoginVK = false;
+    boolean isLoginFB = false;
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
