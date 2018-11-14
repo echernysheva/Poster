@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -59,7 +60,7 @@ public class PostingFragment extends Fragment {
     }
 
     Button send;
-    Switch swFB, swVK;
+    SwitchCompat swFB, swVK;
     TextView mes;
 
     public void Sync(){
@@ -76,8 +77,8 @@ public class PostingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         send = (Button) view.findViewById(R.id.buttonSend);
-        swFB = (Switch) view.findViewById(R.id.switchFB);
-        swVK = (Switch) view.findViewById(R.id.switchVK);
+        swFB = (SwitchCompat) view.findViewById(R.id.switchFB);
+        swVK = (SwitchCompat) view.findViewById(R.id.switchVK);
         mes = (TextView) view.findViewById(R.id.messageText);
 
         // обработка изменения текста в поле
