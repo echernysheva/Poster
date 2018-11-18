@@ -14,17 +14,6 @@
 
         <!-- TODO: Update blank fragment layout -->
 
-        <Button
-            android:id="@+id/buttonFB"
-            android:layout_width="119dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/login"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFB" />
-
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
@@ -76,35 +65,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-        <TextView
-            android:id="@+id/nameVK"
-            android:layout_width="130dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible"
-            app:layout_constraintStart_toEndOf="@+id/buttonVK"
-            app:layout_constraintTop_toBottomOf="@+id/tvVK" />
-
-        <TextView
-            android:id="@+id/nameFB"
-            android:layout_width="135dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="36dp"
-            android:visibility="invisible"
-            app:layout_constraintStart_toEndOf="@+id/buttonFB"
-            app:layout_constraintTop_toBottomOf="@+id/tvFB" />
-
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonFB" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFB" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -1,19 +1,16 @@
 package com.waxvas.poster;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +22,13 @@ import com.vk.sdk.api.VKError;
 import com.vk.sdk.api.VKParameters;
 import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
-import com.vk.sdk.api.model.VKAttachments;
 import com.vk.sdk.api.model.VKWallPostResult;
 
-public class PostingFragment extends Fragment {
+import com.facebook.AccessToken;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
+public class PostingFragment extends Fragment {
     void makeToast(String mes){
         Toast toast = Toast.makeText(getActivity(), mes, Toast.LENGTH_LONG);
         toast.show();
@@ -59,11 +58,35 @@ public class PostingFragment extends Fragment {
         });
     }
 
+    void makePostFB() {
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse("https://play.google.com/store/apps/details?id=com.waxvas.poster")).setContentDescription(mes.getText().toString())
+                .build();
+        ShareDialog shareDialog = new ShareDialog(getActivity());
+        shareDialog.show(content);
+    }
+
+    String getIdFB() {
+        AccessToken fbAccessToken = AccessToken.getCurrentAccessToken();
+        return fbAccessToken.getUserId();
+    }
+
     Button send;
     SwitchCompat swFB, swVK;
     TextView mes;
 
     public void Sync(){
+        AccessToken fbAccessToken = null;
+        try {
+            fbAccessToken = AccessToken.getCurrentAccessToken();
+        }
+        catch (Exception e) {}
+        swFB.setEnabled(fbAccessToken != null);
+        swVK.setEnabled(VKSdk.isLoggedIn());
+        if (!swFB.isEnabled())
+            swFB.setChecked(false);
+        if (!swVK.isEnabled())
+            swVK.setChecked(false);
         send.setEnabled((swFB.isChecked()||swVK.isChecked()) && mes.length()>0);
     }
 
@@ -94,6 +117,7 @@ public class PostingFragment extends Fragment {
                 Sync();
             }
         });
+
         // обработка нажатия свитча
         swFB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -101,6 +125,7 @@ public class PostingFragment extends Fragment {
                 Sync();
             }
         });
+
         // обработка нажатия свитча
         swVK.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -118,6 +143,7 @@ public class PostingFragment extends Fragment {
                 }
                 if (swFB.isChecked()){
                     //отправка в ФБ
+                    makePostFB();
                 }
             }
         });

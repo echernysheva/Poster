@@ -1,9 +1,6 @@
 package com.waxvas.poster;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.vk.sdk.VKAccessToken;
-import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKScope;
 import com.vk.sdk.VKSdk;
 
@@ -27,17 +22,11 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.vk.sdk.api.VKApi;
-import com.vk.sdk.api.VKError;
-import com.vk.sdk.api.VKParameters;
-
-import org.w3c.dom.Text;
 
 
 public class AccountsFragment extends Fragment {
 
     Button loginVK;
-    TextView nameVK;
 
     private CallbackManager callbackManager;
     private TextView textView;
@@ -100,14 +89,12 @@ public class AccountsFragment extends Fragment {
 
         // Facebook
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
-        textView = (TextView) view.findViewById(R.id.nameFB);
-
-        loginButton.setReadPermissions("user_friends");
+        // доступ к публикации
+        loginButton.setReadPermissions("user_posts");
         loginButton.setFragment(this);
         loginButton.registerCallback(callbackManager, callback);
 
         // Вконтакте
-        nameVK = (TextView) view.findViewById(R.id.nameVK);
         loginVK = (Button) view.findViewById(R.id.buttonVK);
         loginVK.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -136,7 +123,6 @@ public class AccountsFragment extends Fragment {
         }
         else {
             loginVK.setText(getResources().getString(R.string.login));
-            nameVK.setText("");
         }
     }
 
