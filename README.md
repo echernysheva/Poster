@@ -1,4 +1,4 @@
-# Poster
+﻿# Poster
 Social networks posting application
 
 Приложение для постинга в социальных сетях
@@ -8,6 +8,7 @@ Social networks posting application
 Приложение позволяет авторизоваться в нужных соц. сетях с помощью их API или библиотек. 
 Поддерживаемые сервисы (или планируемые):
 - ВКонтакте,
+- Facebook,
 - Twitter.
 
 Приложение реализуется при помощи продукта Android Studio для целевой платформы Android на языке программирования Java.
